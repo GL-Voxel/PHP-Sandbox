@@ -1,9 +1,9 @@
 <title>Поиск robot.txt</title>
 <?php
+	//vk.com - Возникла ошибка, при получении файла
+	//yandex.ru - находит, выcчитывает размер robots.txt
 	function CheckRobotTXT($link){//Проверка на наличие robot.txt в файле
-		# vk.com - Возникла ошибка, при получении файла
-		# yandex.ru - находит, вычситывает размер robots.txt
-		$link = $link.'/robots.txt';       // конкатенация строки с URL со сторокой "robotstxt"
+		$link = $link.'/robots.txt';       // конкатенация строки с URL со сторокой "robots.txt"
 		$file_headers = @get_headers($link); // подготавливаем headers страницы
 		if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {	 
 			return False;
@@ -24,7 +24,9 @@
 	}
 	
 	if(isset($_GET['link'])){
-		if(CheckRobotTXT($_GET['link'])){
+		$link = $_GET['link'];
+		echo $link."\n";
+		if(CheckRobotTXT($link)){
 			echo $link."\n";
 			$file = fopen('robots.txt', 'w'); 
 			$ch = curl_init(); // инициализация cURL
