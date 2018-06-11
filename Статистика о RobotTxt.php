@@ -37,7 +37,7 @@
 			curl_close($ch);				 
 			global $resultFile; // описываем как глобальную переменную
 			$resultfile = 'robots.txt'; // файл, который получили
-			echo "Размер файла: ".filesize($resultFile)." байт";
+			echo "Вес файла: ".filesize($resultFile)." байт";
 			echo "Директива Host: ";
 			if(HasHost($resultFile))
 				echo "Есть";
@@ -49,7 +49,7 @@
 	}
 ?>
 
-<form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink"/>
-	Введите ссылку на сайт:<input type = "text" id = "link" required = 1/>
+<form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink">
+	Введите ссылку на сайт:<input type = "text" id = "link" required = 1>
 	<input type = "submit" value = "Проверить">
 </form>
