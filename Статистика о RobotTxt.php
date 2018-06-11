@@ -28,7 +28,7 @@
 			echo $link."\n";
 			$file = fopen('robots.txt', 'w'); 
 			$ch = curl_init(); // инициализация cURL
-			curl_setopt($ch, CURLOPT_URL, $link);
+			curl_setopt($ch, CURLOPT_URL, $_GET['link']);
 			curl_setopt($ch, CURLOPT_FILE, $file);
 			curl_exec($ch);
 			fclose($file);
@@ -42,9 +42,9 @@
 			else
 				echo "Отсутствует";
 		}
+		else
+			echo "Файл отсутствует robot.txt по ссылке";
 	}
-	else
-		echo "Файл отсутствует robot.txt по ссылке: ".$link;
 ?>
 
 <form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink"/>
