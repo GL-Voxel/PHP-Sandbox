@@ -47,7 +47,6 @@
 		else
 			echo "Файл отсутствует robot.txt по ссылке: ".$link;
 ?>
-
 <form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink"/>
 	Введите ссылку на сайт:<input type = "text" id = "link" required = 1/>
 	<input type = "submit" value = "Проверить">
