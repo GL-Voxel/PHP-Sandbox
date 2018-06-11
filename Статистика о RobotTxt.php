@@ -23,30 +23,30 @@
 		}
 	}
 	
-	if(isset($_GET['link']))
+	if(isset($_GET['link'])){
 		if(CheckRobotTXT($_GET['link'])){
-			$file_headers = @get_headers($link); // подготавливаем headers страницы
-			$file = fopen('robots.txt', 'w'); // открываем файл для записи, поехали!
+			echo $link."\n";
+			$file = fopen('robots.txt', 'w'); 
 			$ch = curl_init(); // инициализация cURL
-			curl_setopt($ch, CURLOPT_URL, $main_str);
+			curl_setopt($ch, CURLOPT_URL, $link);
 			curl_setopt($ch, CURLOPT_FILE, $file);
 			curl_exec($ch);
 			fclose($file);
 			curl_close($ch);				 
-			global $resultfile; // описываем как глобальную переменную
+			global $resultFile; // описываем как глобальную переменную
 			$resultfile = 'robots.txt'; // файл, который получили
-			echo $link."\n";
+			echo "Размер файла: ".filesize($resultFile)." байт";
 			echo "Директива Host: ";
-			echo "Размер файла: ".filesize($resultfile)." байт";
-			if(HasHost($resultfile))
+			if(HasHost($resultFile))
 				echo "Есть";
 			else
 				echo "Отсутствует";
-			
 		}
-		else
-			echo "Файл отсутствует robot.txt по ссылке: ".$link;
+	}
+	else
+		echo "Файл отсутствует robot.txt по ссылке: ".$link;
 ?>
+
 <form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink"/>
 	Введите ссылку на сайт:<input type = "text" id = "link" required = 1/>
 	<input type = "submit" value = "Проверить">
