@@ -50,6 +50,6 @@
 ?>
 
 <form action = "RobotSearch.php"  method = "GET" name = "inputLink" id = "inputLink">
-	Введите ссылку на сайт:<input type = "text" id = "link" required = 1>
+	Введите ссылку на сайт:<input type = "text" name = "link">
 	<input type = "submit" value = "Проверить">
 </form>
